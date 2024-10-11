@@ -1,0 +1,19 @@
+sequenceDiagram
+    User->>+User: viewEvents()
+    User->>+Event: getEvents()
+    Event-->>-User: events
+    User->>+User: displayEvents(events)
+    User->>+User: selectEvent(eventId)
+    User->>+Event: getAvailableTickets(eventId)
+    Event-->>-User: availableTickets
+    alt tickets available
+        User->>+User: displayTicketPrice(ticketPrice)
+        User->>+User: purchaseTicket(eventId, quantity)
+        User->>+Event: purchaseTicket(user, eventId, quantity)
+        Event-->>-User: ticket
+        User->>+User: displayPurchaseConfirmation(ticket)
+    else tickets sold out
+        User->>+User: displaySoldOutMessage()
+        User->>+User: joinWaitlist(eventId)
+        User->>+Event: addToWaitlist(user, eventId)
+    end

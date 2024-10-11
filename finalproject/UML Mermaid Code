@@ -1,0 +1,152 @@
+classDiagram
+    class User {
+        +string username
+        +string password
+        +string name
+        +string email
+        +login()
+        +logout()
+        +viewSchedule()
+        +makeReservation()
+        +cancelReservation()
+        +getUsername() string
+        +setUsername(string username)
+        +getPassword() string
+        +setPassword(string password)
+        +getName() string
+        +setName(string name)
+        +getEmail() string
+        +setEmail(string email)
+    }
+    User <|-- CityUser
+    User <|-- NonResident
+    User <|-- Resident
+
+    class Reservation {
+        +int reservationID
+        +string date
+        +string time
+        +string userID
+        +string facilityID
+        +string eventID
+        +calculateCost()
+        +enforceRules()
+        +processPayment()
+        +cancelReservation()
+        +getReservationID() int
+        +setReservationID(int reservationID)
+        +getDate() string
+        +setDate(string date)
+        +getTime() string
+        +setTime(string time)
+        +getUserID() string
+        +setUserID(string userID)
+        +getFacilityID() string
+        +setFacilityID(string facilityID)
+        +getEventID() string
+        +setEventID(string eventID)
+    }
+    User --> Reservation
+    Event --> Reservation
+    Facility --> Reservation
+
+    class Facility {
+        +string facilityID
+        +string name
+        +string location
+        +string details
+        +checkAvailability()
+        +makeSchedule()
+        +setReservationLimits()
+        +getFacilityID() string
+        +setFacilityID(string facilityID)
+        +getName() string
+        +setName(string name)
+        +getLocation() string
+        +setLocation(string location)
+        +getDetails() string
+        +setDetails(string details)
+    }
+    Facility --> Reservation
+
+    class Event {
+        +string eventID
+        +string name
+        +string date
+        +string time
+        +string location
+        +int maxAttendees
+        +manageAttendees()
+        +sellTickets()
+        +manageWaitlist()
+        +processCancellations()
+        +processRefunds()
+        +getEventID() string
+        +setEventID(string eventID)
+        +getName() string
+        +setName(string name)
+        +getDate() string
+        +setDate(string date)
+        +getTime() string
+        +setTime(string time)
+        +getLocation() string
+        +setLocation(string location)
+        +getMaxAttendees() int
+        +setMaxAttendees(int maxAttendees)
+    }
+    Event --> Ticket
+    Event --> Reservation
+
+    class Ticket {
+        +int ticketID
+        +string userID
+        +string eventID
+        +double price
+        +issueTicket()
+        +cancelTicket()
+        +getTicketID() int
+        +setTicketID(int ticketID)
+        +getUserID() string
+        +setUserID(string userID)
+        +getEventID() string
+        +setEventID(string eventID)
+        +getPrice() double
+        +setPrice(double price)
+    }
+    User --> Ticket
+    Event --> Ticket
+
+    class FacilityManager {
+        +string managerID
+        +string name
+        +manageBudget()
+        +approveReservation()
+        +processRefund()
+        +getManagerID() string
+        +setManagerID(string managerID)
+        +getName() string
+        +setName(string name)
+    }
+    Facility --> FacilityManager
+    Reservation --> FacilityManager
+
+    class CityUser {
+        +string citySpecificInfo
+        +getCitySpecificInfo() string
+        +setCitySpecificInfo(string citySpecificInfo)
+    }
+    CityUser --> User
+
+    class NonResident {
+        +string nonResidentSpecificInfo
+        +getNonResidentSpecificInfo() string
+        +setNonResidentSpecificInfo(string nonResidentSpecificInfo)
+    }
+    NonResident --> User
+
+    class Resident {
+        +string residentSpecificInfo
+        +getResidentSpecificInfo() string
+        +setResidentSpecificInfo(string residentSpecificInfo)
+    }
+    Resident --> User

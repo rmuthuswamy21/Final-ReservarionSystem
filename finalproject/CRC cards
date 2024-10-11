@@ -1,0 +1,92 @@
++----------------------+-------------------------------------+
+| Class: User          | Collaborators:                     |
+|                      | - Reservation                      |
+| Responsibilities:    | - Event                            |
+| - User types         | - Ticket                           |
+| - User information   |                                    |
+| - Login              |                                    |
+| - View schedule      |                                    |
+| - Make reservation   |                                    |
+| - Cancel reservation |                                    |
++----------------------+-------------------------------------+
+
++----------------------+-------------------------------------+
+| Class: Reservation   | Collaborators:                     |
+|                      | - Facility                         |
+| Responsibilities:    | - User                             |
+| - Reservation details| - Event                            |
+| - Calculate cost     |                                    |
+| - Enforce rules      |                                    |
+| - Process payment    |                                    |
+| - Cancel reservation |                                    |
++----------------------+-------------------------------------+
+
++----------------------+-------------------------------------+
+| Class: Facility      | Collaborators:                     |
+|                      | - Reservation                      |
+| Responsibilities:    |                                    |
+| - Facility details   |                                    |
+| - Availability       |                                    |
+| - Schedule           |                                    |
+| - Reservation limits |                                    |
++----------------------+-------------------------------------+
+
++----------------------+-------------------------------------+
+| Class: Event         | Collaborators:                     |
+|                      | - Ticket                           |
+| Responsibilities:    | - Reservation                      |
+| - Event details      |                                    |
+| - Attendees          |                                    |
+| - Ticket sales       |                                    |
+| - Waitlist           |                                    |
+| - Cancellations      |                                    |
+| - Refunds            |                                    |
++----------------------+-------------------------------------+
+
++----------------------+-------------------------------------+
+| Class: Ticket        | Collaborators:                     |
+|                      | - User                             |
+| Responsibilities:    | - Event                            |
+| - Ticket details     |                                    |
+| - User               |                                    |
+| - Event              |                                    |
+| - Price              |                                    |
++----------------------+-------------------------------------+
+
++--------------------------+---------------------------------+
+| Class: FacilityManager   | Collaborators:                 |
+|                          | - Facility                     |
+| Responsibilities:        | - Reservation                  |
+| - Manage budget          |                                 |
+| - Approve reservation    |                                 |
+| - Process refund         |                                 |
++--------------------------+---------------------------------+
+
++--------------------------+---------------------------------+
+| Class: CityUser          | Collaborators:                 |
+|                          | - User                         |
+| Responsibilities:        |                                 |
+| - Inherits from User     |                                 |
+| - Additional city-specific|                                 |
+|   details and behaviors  |                                 |
++--------------------------+---------------------------------+
+
++--------------------------+---------------------------------+
+| Class: NonResident       | Collaborators:                 |
+|                          | - User                         |
+| Responsibilities:        |                                 |
+| - Inherits from User     |                                 |
+| - Additional non-resident|                                 |
+|   specific details and   |                                 |
+|   behaviors              |                                 |
++--------------------------+---------------------------------+
+
++--------------------------+---------------------------------+
+| Class: Resident          | Collaborators:                 |
+|                          | - User                         |
+| Responsibilities:        |                                 |
+| - Inherits from User     |                                 |
+| - Additional resident-   |                                 |
+|   specific details and   |                                 |
+|   behaviors              |                                 |
++--------------------------+---------------------------------+

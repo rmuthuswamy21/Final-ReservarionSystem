@@ -1,0 +1,21 @@
+sequenceDiagram
+    User->>+User: makeReservation()
+    User->>+Facility: getAvailableTimeSlots()
+    Facility-->>-User: availableTimeSlots
+    User->>+User: displayAvailableTimeSlots(availableTimeSlots)
+    User->>+User: selectTimeSlot(startTime, endTime)
+    User->>+Facility: isAvailable(startTime, endTime)
+    Facility-->>-User: isAvailable
+    alt facility available
+        User->>+User: displayLayoutStyles()
+        User->>+User: selectLayoutStyle(layoutStyle)
+        User->>+Reservation: create(user, facility, startTime, endTime, layoutStyle)
+        Reservation->>+Reservation: calculateCost()
+        Reservation-->>-User: totalCost
+        User->>+User: displayReservationDetails(totalCost)
+        User->>+User: confirmReservation()
+        User->>+Facility: addReservation(reservation)
+        User->>+User: displayConfirmation()
+    else facility unavailable
+        User->>+User: displayUnavailabilityMessage()
+    end

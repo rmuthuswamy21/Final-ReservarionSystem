@@ -1,0 +1,9 @@
+sequenceDiagram
+    User->>+User: login(username, password)
+    User->>+User: validateCredentials(username, password)
+    User-->>-User: validationResult
+    alt successful validation
+        User->>+User: displayMenu()
+    else unsuccessful validation
+        User->>+User: displayErrorMessage()
+    end
